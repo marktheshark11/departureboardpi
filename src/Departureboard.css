@@ -1,0 +1,99 @@
+body {
+    background-color: black;
+    
+}
+
+.departureboard {
+  /* margin-top: 10px; */
+  font-family: 'Arial Nova', sans-serif;
+  font-size: 16px;
+  background-color: black;
+}
+
+.departure {
+    /* border-bottom: 1px solid white; */
+    color: white;
+    margin: 1%;
+    cursor: pointer;
+  }
+.border {
+  width: 100%;
+  /* margin-top: 20px; */
+  border-bottom: 1px solid white;
+}
+  
+/* .first {
+    height: 100px;
+} */
+
+.stops {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.stop-time {
+  align-self: center;
+  font-size: 12px;
+  margin-left: 20px;
+}
+.row {
+    display: flex;
+    gap: 10px;
+    flex: 1;
+    justify-content: space-between;
+    margin: 6px 4px;
+    
+}
+
+.info {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+    
+    
+}
+
+.line-icon {
+    background-color: red;
+    font-size: 14px;
+    font-family: 'Arial Nova', sans-serif;
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 4px;
+    height: 16px;
+    margin-top: 10px;
+    
+    color: white;
+}
+
+
+
+.arrival-time {
+    text-align: right;
+    margin-right: 2%;
+}
+
+.stop {
+    color: white;
+}
+
+
+.glow {
+    text-shadow: 0px 0px 2px blue;
+  }
+
+.noglow {
+    text-shadow: none;
+}
+
+.icon {
+    color: white;
+    margin-left: auto;
+    /* margin-top: 10px; */
+    margin-right: 20px;
+    /* margin-bottom: 10px */
+    /* margin-right: auto; */
+}

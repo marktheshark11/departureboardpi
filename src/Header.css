@@ -1,0 +1,43 @@
+/* .header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em;
+} */
+
+/* .line-icon {
+    background-color: red;
+    font-size: 14px;
+    font-family: 'Arial Nova', sans-serif;
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 4px;
+    height: 16px;
+    
+    color: white;
+} */
+
+.header-button {
+    background-color: gray;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 0px;
+    font-weight: bold;
+}
+
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    background-color: red;
+    border-radius: 8px;
+    padding: 1% 4%;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px;
+    font-weight: bold;
+}
