@@ -44,26 +44,50 @@ const StopTime = ({ time }) => {
   )
 }
 
-const Departure = ({ isExpanded, departure, onToggle, showDirectionsIndex }) => {
+const Departure = ({ isExpanded, departure, onToggle, expandedIndex }) => {
   return (
-    <div className = "departure">
-      <div onClick={onToggle}>
-        <div className="row" >
-          <div className="line-icon">{ departure.Product[0].line }</div>
-          <Info departure={departure || 'departure'}/>
+      <div>
+        { expandedIndex === null &&
+        <div className = "departure">
+          <div onClick={onToggle}>
+            <div className="row" >
+              <div className="line-icon">{ departure.Product[0].line }</div>
+              <Info departure={departure || 'departure'}/>
+            </div>
+            <div className="row"> { isExpanded &&
+            (
+              <Stops stops={ departure.Stops.Stop.slice(1) || ["stopp"] } />
+            )}
+            </div>
+            <div className="row">          
+              <FaAngleDown className="icon"/>
+            </div>
+            <div className="border"> </div>
+          </div>
         </div>
-        <div className="row"> { isExpanded &&
-        (
-          <Stops stops={ departure.Stops.Stop.slice(1) || ["stopp"] } />
-        )}
-        </div>
-        <div className="row">          
-          <FaAngleDown className="icon"/>
-        </div>
-        <div className="border"> </div>
+        }
       </div>
-    </div>
-  )
+  )  
+}
+
+const DepartureDetailed = ({ isExpanded, departure, onToggle, expandedIndex }) => {
+  return (
+      <div className = "departure">
+        <div onClick={onToggle}>
+          <div className="row" >
+            <div className="line-icon">{ departure.Product[0].line }</div>
+            <Info departure={departure || 'departure'}/>
+          </div>
+          <div className="row">
+            <Stops stops={ departure.Stops.Stop.slice(1) || ["stopp"] } />
+          </div>
+          <div className="row">          
+            <FaAngleDown className="icon"/>
+          </div>
+          <div className="border"> </div>
+        </div>
+      </div>
+  )  
 }
 
 export default function Departureboard({ departures, trackIndex }) {
@@ -78,21 +102,41 @@ export default function Departureboard({ departures, trackIndex }) {
   };
   return (
     <div className="departureboard glow">
-      {departures
-      .filter(departure => getMinsToArrival(departure) > -2)
-      .filter(departure => {
-        return departure.directionFlag !== `${trackIndex}`;
-      })
+      {getFilteredDepartures(departures, trackIndex)
       .map((departure, index) => {
         const isExpanded = expandedIndex === index;
-        
-        return  <Departure isExpanded={isExpanded} onToggle={() => toggleExpansion(index)} key={index} departure={departure}/>;
+        return(
+        <div>
+          <div> { !isExpanded &&
+            <Departure isExpanded={isExpanded} onToggle={() => toggleExpansion(index)} key={index} departure={departure} expandedIndex={expandedIndex}/>
+          }
+          </div>
+          <div> { isExpanded &&
+            <DepartureDetailed isExpanded={isExpanded} onToggle={() => toggleExpansion(index)} key={index} departure={departure} expandedIndex={expandedIndex}/>
+          }
+          </div>
+        </div>
+      );
       })}
     </div>
   )
 }
 
 // Helper functions
+
+function getFilteredDepartures(departures, trackIndex) {
+  return (
+  departures
+  .filter(departure => getMinsToArrival(departure) > -2) // Filter out departures that have already left
+  .filter(departure => {  // Filter out departures that aren't going in the right direction
+    if (trackIndex === 0) {
+      return departure.directionFlag === "1" || departure.directionFlag === "2";
+    }
+    return departure.directionFlag === `${trackIndex}`;
+  })
+  .filter((departure, index) => index < getDepartureBoardAmount()) // Filter out departures that don't fit on the screen
+)
+}
 
 function getArrivalString(departure) {
   const arrivalTime = departure.time;
@@ -137,4 +181,13 @@ function getArrivalTimeColor(departure) {
   } else {
     return "white";
   }
+}
+
+function getDepartureBoardAmount() {
+  const headerHeight = 56;
+  const boardHeight = 142;
+  const winHeight = window.innerHeight;
+  const amount = Math.floor((winHeight - headerHeight) / boardHeight);
+  console.log(winHeight, amount)
+  return amount
 }

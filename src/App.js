@@ -11,9 +11,7 @@ const passlist = 1; // 1 for all stops
 const apiUrl = `https://api.resrobot.se/v2.1/departureBoard?id=${ID_Telefonplan}&format=json&accessId=${API_KEY}&products=${products}&duration=${duration}&passlist=${passlist}`; 
 
 
-console.log("helli")
 export default function App() {
-  const showDirections = 0;
   const [departures, setDepartures] = useState([]);
   const [trackIndex, setTrackIndex] = useState(0);
 

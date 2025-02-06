@@ -6,34 +6,33 @@ body {
 .departureboard {
   /* margin-top: 10px; */
   font-family: 'Arial Nova', sans-serif;
-  font-size: 16px;
+  font-size: 24px;
   background-color: black;
 }
 
 .departure {
-    /* border-bottom: 1px solid white; */
-    color: white;
-    margin: 1%;
-    cursor: pointer;
-  }
+  /* border-bottom: 1px solid white; */
+  color: white;
+  margin: 1%;
+  cursor: pointer;
+}
+
+
 .border {
   width: 100%;
   /* margin-top: 20px; */
   border-bottom: 1px solid white;
 }
-  
-/* .first {
-    height: 100px;
-} */
+
 
 .stops {
   margin-top: 10px;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .stop-time {
   align-self: center;
-  font-size: 12px;
+  font-size: 16px;
   margin-left: 20px;
 }
 .row {
@@ -41,7 +40,7 @@ body {
     gap: 10px;
     flex: 1;
     justify-content: space-between;
-    margin: 6px 4px;
+    margin: 20px 4px;
     
 }
 
@@ -58,12 +57,12 @@ body {
 
 .line-icon {
     background-color: red;
-    font-size: 14px;
+    font-size: 24px;
     font-family: 'Arial Nova', sans-serif;
     padding-left: 7px;
     padding-right: 7px;
     border-radius: 4px;
-    height: 16px;
+    height: 26px;
     margin-top: 10px;
     
     color: white;
