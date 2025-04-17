@@ -34,9 +34,8 @@ export default function App() {
   useEffect(() => {
     const reRenderInterval = setInterval(() => {
       setTick((prev) => prev + 1);
-    }, 10000);  // Tick state changes every 10seconds, forcing a re-render
+    }, 10000);  // Tick state changes every 10seconds, forcing a re-render. All setState functions force re-render in React
 
-    // Rensa upp
     return () => clearInterval(reRenderInterval);
   }, []);
 
@@ -47,8 +46,6 @@ export default function App() {
         }
         return prev + 1;
     });
-
-  console.log("showAllDirections", trackIndex)
   }
 
   return (
